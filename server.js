@@ -1,6 +1,6 @@
 require("dotenv").config();
-const mongoose = require("mongoose");
 const express = require("express");
+const mongoose = require("mongoose");
 const { errorMiddleware } = require("./middleware/errorMiddleware");
 const userRoutes = require("./routes/userRoutes");
 const app = express();
@@ -9,10 +9,7 @@ const PORT = process.env.PORT || 8080;
 const DB_URI = process.env.DB_URI;
 
 mongoose
-  .connect(DB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(DB_URI)
   .then(() =>
     app.listen(PORT, () => console.log(`Now live at http://localhost:${PORT}/`))
   )
