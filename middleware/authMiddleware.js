@@ -37,7 +37,7 @@ const adminProtected = catchAsync(async (req, res, next) => {
     const { id } = jwt.verify(token, process.env.JWT_SECRET);
     const user = await User.findOne({ _id: id });
     if (!user.isAdmin) {
-      throw new AppError("Not an administrator.", 402);
+      throw new AppError("Not an administrator.", 403);
     }
     req.user = user;
     next();
