@@ -7,7 +7,7 @@ class AppError extends Error {
 
 const errorMiddleware = (err, req, res, next) => {
   const { message = "Something went wrong.", statusCode = 500 } = err;
-  res.json({
+  res.status(statusCode).json({
     status: statusCode,
     message: message,
   });
